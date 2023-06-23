@@ -1,4 +1,3 @@
-import Search from '@/pages/search';
 import Search_Bar from './search_bar'
 
 import Link from 'next/link'

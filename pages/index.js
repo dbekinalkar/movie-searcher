@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
 import Search_Bar from '@/components/search_bar'
 
 export default function Home() {
