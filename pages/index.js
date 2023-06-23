@@ -10,21 +10,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="layout">
+      <div className="container vh-100 d-flex flex-column justify-content-center align-items-center">
         <h1>
           Movie Searcher
         </h1>
-        <Search_Bar />
+        <Search_Bar className="search"/>
       </div>
-      <style jsx>{`
-      .layout {
-        margin: 30vh;
-        margin-top: 40vh;
-    
-        display: flex;
-        flex-direction: column;
-      }
-      `}</style>
     </>
   )
 }

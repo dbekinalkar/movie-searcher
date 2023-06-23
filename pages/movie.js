@@ -9,9 +9,7 @@ export async function getServerSideProps({ query }){
     const id = query.id;
     let data = await movieDetails(id);
 
-    console.log(data);
-
-    return {props: {data}}
+    return { props: { data } }
 }
 
 export default function Movie({ data }) {

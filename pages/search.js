@@ -18,8 +18,6 @@ export async function getServerSideProps( { query }) {
         console.log(exceptionVar);
     }
 
-    console.log(data)
-
     return { props: { data } }
 }
 
@@ -28,11 +26,6 @@ export async function getServerSideProps( { query }) {
 export default function Search( {data} ) {
     const searchParams = useSearchParams()
     const search = searchParams.get('search')
-
-    let width;
-
-    if (typeof window !== "undefined") {width = window.innerWidth; }
-
 
     return (
       <>
@@ -43,42 +36,24 @@ export default function Search( {data} ) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Navbar />
-        <div className="layout">
+        <div className="container mt-3">
             <h6>Showing search results for: &quot;{search}&quot;</h6>
             <h7>Results: {data.total_results}</h7>
-            <div className="results-container">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
                 {data.results.map((result) => 
-                        <div key={result.id} className="movie-card card border-primary mb-3" >
+                        <div key={result.id} className="col">
+                        <div className="movie-card card border-primary m-3" >
                             <Link href={{pathname: '/movie', query: {id: result.id}}} style={{ textDecoration: 'none' }}>
                                 <Movie_Image className="movie-img card-img-top" poster_path={result.poster_path} />
                                 <div className="card-body">
-                                    <h4 className="card-title">{result.title}</h4>
+                                    <h6 className="card-title">{result.title}</h6>
                                     <p className="card-text">{result.release_date.substring(0, result.release_date.indexOf('-'))}</p>
                                 </div>
                             </Link>
                         </div>
+                        </div>
                 )}
             </div>
-            <style jsx>{`
-                .layout {
-                    margin: 16px;
-                }
-                .movie-img {
-                    height: auto;
-                }
-                .movie-card {
-                    min-width: 20vw;
-                    margin: 10px;
-                    flex: 1;
-
-                    text-decoration: none;
-                }
-                .results-container {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
-                }
-            `}</style>
         </div>
       </>
     )
