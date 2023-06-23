@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
+import Navbar from '@/components/navbar'
 import Search_Bar from '@/components/search_bar'
 import Movie_Image from '@/components/movie_image'
 
@@ -20,6 +21,8 @@ export async function getServerSideProps( { query }) {
         console.log(exceptionVar);
     }
 
+    console.log(data)
+
     return { props: { data } }
 }
 
@@ -29,7 +32,10 @@ export default function Search( {data} ) {
     const searchParams = useSearchParams()
     const search = searchParams.get('search')
 
-    const res = [{id:0, title: 'hello', vote_average: '2'}, {id:10, title: 'hello', vote_average: '2'}];
+    let width;
+
+    if (typeof window !== "undefined") {width = window.innerWidth; }
+
 
     return (
       <>
@@ -39,8 +45,8 @@ export default function Search( {data} ) {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div>
-            <Search_Bar />
+        <Navbar />
+        <div className="layout">
             <h6>Showing search results for: &quot;{search}&quot;</h6>
             <h7>Results: {data.total_results}</h7>
             <div className="results-container">
@@ -50,27 +56,29 @@ export default function Search( {data} ) {
                                 <Movie_Image className="movie-img card-img-top" poster_path={result.poster_path} />
                                 <div className="card-body">
                                     <h4 className="card-title">{result.title}</h4>
-                                    <p className="card-text">{result.vote_average}</p>
+                                    <p className="card-text">{result.release_date.substring(0, result.release_date.indexOf('-'))}</p>
                                 </div>
                             </Link>
                         </div>
                 )}
             </div>
             <style jsx>{`
-                a {
-                    text-decoration: none;
+                .layout {
+                    margin: 16px;
                 }
                 .movie-img {
                     height: auto;
+
                 }
                 .movie-card {
-                    width: 20rem;
-                    text-decoration:none;
+                    width: 20vw;
+                    margin: 10px;
+                    text-decoration: none;
                 }
                 .results-container {
                     display: flex;
                     flex-wrap: wrap;
-                    justify-content: space-evenly;
+                    justify-content: space-between;
                 }
             `}</style>
         </div>
