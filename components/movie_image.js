@@ -2,7 +2,8 @@ import Image from 'next/image'
 
 export default function Movie_Image({poster_path, className, fill}) {
     if (poster_path == null){
-        return <></>;
+        // eslint-disable-next-line @next/next/no-img-element
+        return <img className={className} src="/no_image.jpg" alt="Movie Poster"/>;
     }
 
     if (fill){
@@ -10,5 +11,5 @@ export default function Movie_Image({poster_path, className, fill}) {
     }
 
     // eslint-disable-next-line @next/next/no-img-element
-    return <img className={className} src={"https://image.tmdb.org/t/p/original"+poster_path}alt="Movie Poster" />;
+    return <img className={className} src={"https://image.tmdb.org/t/p/original"+poster_path} alt="Movie Poster" />;
 }
