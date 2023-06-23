@@ -57,6 +57,7 @@ export default function Movie({ data }) {
                     height: auto;
 
                     flex: 1;
+                    align-self: center;
 
                     filter: drop-shadow(0px 0px 10px #000);
                 }

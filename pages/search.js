@@ -67,8 +67,10 @@ export default function Search( {data} ) {
                     height: auto;
                 }
                 .movie-card {
-                    width: 20vw;
+                    min-width: 20vw;
                     margin: 10px;
+                    flex: 1;
+
                     text-decoration: none;
                 }
                 .results-container {
