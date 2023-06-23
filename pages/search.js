@@ -68,7 +68,6 @@ export default function Search( {data} ) {
                 }
                 .movie-img {
                     height: auto;
-
                 }
                 .movie-card {
                     width: 20vw;
