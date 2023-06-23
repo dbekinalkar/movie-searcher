@@ -36,10 +36,10 @@ export default function Search( {data} ) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Navbar />
-        <div className="container mt-3">
+        <div className="container-fluid mt-2">
             <h6>Showing search results for: &quot;{search}&quot;</h6>
             <h7>Results: {data.total_results}</h7>
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                 {data.results.map((result) => 
                         <div key={result.id} className="col">
                         <div className="movie-card card border-primary m-3" >
