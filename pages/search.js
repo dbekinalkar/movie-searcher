@@ -42,15 +42,15 @@ export default function Search( {data} ) {
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                 {data.results.map((result) => 
                         <div key={result.id} className="col">
-                        <div className="movie-card card border-primary m-3" >
-                            <Link href={{pathname: '/movie', query: {id: result.id}}} style={{ textDecoration: 'none' }}>
-                                <Movie_Image className="movie-img card-img-top" poster_path={result.poster_path} />
-                                <div className="card-body">
-                                    <h6 className="card-title">{result.title}</h6>
-                                    <p className="card-text">{result.release_date.substring(0, result.release_date.indexOf('-'))}</p>
-                                </div>
-                            </Link>
-                        </div>
+                            <div className="card border-primary m-2" >
+                                <Link href={{pathname: '/movie', query: {id: result.id}}} style={{ textDecoration: 'none' }}>
+                                    <Movie_Image className="movie-img card-img-top" poster_path={result.poster_path} />
+                                    <div className="card-body">
+                                        <h6 className="card-title">{result.title}</h6>
+                                        <p className="card-text">{result.release_date.substring(0, result.release_date.indexOf('-'))}</p>
+                                    </div>
+                                </Link>
+                            </div>
                         </div>
                 )}
             </div>

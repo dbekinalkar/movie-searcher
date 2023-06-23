@@ -22,11 +22,11 @@ export default function Movie({ data }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />
-            <div className="movie-contents">
-                <h2>{data.title}</h2>
-                <div className="movie-details">
-                    <Movie_Image className="movie-img" poster_path={data.poster_path}/>
-                    <div className="movie-info border-primary mb-3 card card-body">
+            <div className="container mt-3 mx-auto col">
+                <h2 className="text-center">{data.title}</h2>
+                <div className="d-flex flex-wrap flex-md-nowrap justify-content-center">
+                    <Movie_Image className="flex-1 movie-img m-3" poster_path={data.poster_path}/>
+                    <div className="movie-info m-3 border-primary card card-body">
                         <h5 className="card-title">Rating</h5>
                         <p className="card-text">{data.vote_average}/10</p>
                         <h5 className="card-title">Overview</h5>
@@ -48,20 +48,14 @@ export default function Movie({ data }) {
                     flex-wrap: wrap;
                 }
                 .movie-img {
-                    display: block;
-                    margin: 10px;
 
                     width: 25vw;
                     height: auto;
 
-                    flex: 1;
-                    align-self: center;
 
                     filter: drop-shadow(0px 0px 10px #000);
                 }
                 .movie-info {
-                    margin: 10px;
-                    width: max(25rem, 40vw);
                 }
             `}</style>
         </div>
